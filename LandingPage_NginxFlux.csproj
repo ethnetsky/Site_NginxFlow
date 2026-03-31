@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="img\" />
-    <Folder Include="js\" />
   </ItemGroup>
 
 </Project>
