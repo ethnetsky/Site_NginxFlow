@@ -1,0 +1,39 @@
+﻿:root {
+    --primary-glow: #0d6efd;
+    --bg-dark: #0f172a;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: white;
+    overflow-x: hidden;
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, rgba(13, 110, 253, 0.15), transparent), radial-gradient(circle at bottom left, rgba(13, 110, 253, 0.05), transparent);
+    padding: 100px 0;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 1.5rem;
+}
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-glow);
+        box-shadow: 0 0 20px rgba(13, 110, 253, 0.2);
+    }
+
+.btn-glow {
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+}
+
+.glass-nav {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
