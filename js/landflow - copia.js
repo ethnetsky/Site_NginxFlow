@@ -95,45 +95,34 @@ function applyLanguage(lang) {
 // 3. LÓGICA DE TEMA (CLARO/OSCURO)
 // ==========================================
 function toggleTheme() {
-    const htmlElement = document.documentElement;
-    const themeIcon = document.getElementById('themeIcon');
-    const navbarLogo = document.getElementById('navbarLogo');
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    // Obtenemos el tema actual
-    const currentTheme = htmlElement.getAttribute('data-bs-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(newTheme);
+}
 
-    // 1. Cambiamos el atributo de Bootstrap
-    htmlElement.setAttribute('data-bs-theme', newTheme);
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-bs-theme', theme);
+    localStorage.setItem('preferredTheme', theme);
 
-    // 2. Cambiamos el icono del botón
-    if (newTheme === 'dark') {
-        themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
-        // 3. Cambiamos al logo oscuro
-        navbarLogo.src = '/img/logo_dark.png';
+    // Actualizar icono
+    const icon = document.getElementById('themeIcon');
+    if (theme === 'dark') {
+        icon.classList.remove('bi-sun-fill');
+        icon.classList.add('bi-moon-stars-fill');
     } else {
-        themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
-        // 3. Cambiamos al logo claro
-        navbarLogo.src = '/img/logo_light.png';
+        icon.classList.remove('bi-moon-stars-fill');
+        icon.classList.add('bi-sun-fill');
     }
-
-    // Opcional: Guardar preferencia en localStorage
-    localStorage.setItem('theme', newTheme);
 }
 
 // ==========================================
 // 4. INICIALIZACIÓN AL CARGAR LA PÁGINA
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const navbarLogo = document.getElementById('navbarLogo');
-
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-bs-theme', 'dark');
-        if (navbarLogo) navbarLogo.src = '/img/logo_dark.png';
-        // También ajusta el icono si es necesario
-        document.getElementById('themeIcon').classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
-    }
+    // Cargar Tema guardado o por defecto dark
+    const savedTheme = localStorage.getItem('preferredTheme') || 'light';
+    applyTheme(savedTheme);
 
     // Cargar Idioma guardado o por defecto es
     const savedLang = localStorage.getItem('preferredLanguage') || 'es';
