@@ -77,3 +77,50 @@ body {
     [data-bs-theme="light"] .navbar-nav .nav-link:hover {
         color: var(--primary-glow);
     }
+
+/* Ajuste específico para el botón de soporte en el Nav */
+.navbar-nav .btn-primary {
+    transition: all 0.3s ease;
+}
+
+/* Cuando el tema es CLARO */
+[data-bs-theme="light"] .navbar-nav .btn-primary {
+    background-color: var(--primary-glow);
+    border-color: var(--primary-glow);
+    color: #ffffff !important; /* Forzamos blanco sobre el azul primario */
+}
+
+    /* Efecto Hover en tema CLARO */
+    [data-bs-theme="light"] .navbar-nav .btn-primary:hover {
+        background-color: #0b5ed7; /* Un azul un poco más oscuro */
+        color: #ffffff !important;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+    }
+
+/* Asegurar que el texto sea legible en el Nav Light para los otros enlaces */
+[data-bs-theme="light"] .glass-nav .nav-link:not(.btn) {
+    color: #0f172a !important;
+}
+
+    [data-bs-theme="light"] .glass-nav .nav-link:not(.btn):hover {
+        color: var(--primary-glow) !important;
+    }
+
+/* --- Ajuste para el botón de contorno (Demo) --- */
+
+/* En tema OSCURO: mantenemos el estilo light original */
+[data-bs-theme="dark"] .btn-outline-light {
+    border-color: #f8f9fa;
+    color: #f8f9fa;
+}
+
+/* En tema CLARO: lo transformamos en un contorno oscuro o primario */
+[data-bs-theme="light"] .btn-outline-light {
+    border-color: var(--body-color); /* Usa el color azul oscuro/negro del texto */
+    color: var(--body-color);
+}
+
+    [data-bs-theme="light"] .btn-outline-light:hover {
+        background-color: var(--body-color);
+        color: var(--body-bg); /* Invierte los colores al pasar el mouse */
+    }
