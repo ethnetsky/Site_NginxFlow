@@ -110,7 +110,7 @@ function toggleTheme() {
     if (newTheme === 'dark') {
         themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
         // 3. Cambiamos al logo oscuro
-        navbarLogo.src = '/img/logo_dark.png';
+        navbarLogo.src = 'img/logo_dark.png';
     } else {
         themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
         // 3. Cambiamos al logo claro
